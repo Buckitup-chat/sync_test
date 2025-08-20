@@ -17,7 +17,7 @@ defmodule SyncTest.Application do
       # Start a worker by calling: SyncTest.Worker.start_link(arg)
       # {SyncTest.Worker, arg},
       # Start to serve requests, typically the last entry
-      SyncTestWeb.Endpoint
+      {SyncTestWeb.Endpoint, phoenix_sync: Phoenix.Sync.plug_opts()}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -32,6 +32,10 @@ defmodule SyncTest.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      # Phoenix Sync
+      {:electric, "~> 1.0"},
+      {:phoenix_sync, "~> 0.5"},
+      # Phoenix
       {:phoenix, "~> 1.7.21"},
       {:phoenix_ecto, "~> 4.5"},
       {:ecto_sql, "~> 3.10"},
