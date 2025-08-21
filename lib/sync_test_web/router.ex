@@ -1,5 +1,6 @@
 defmodule SyncTestWeb.Router do
   use SyncTestWeb, :router
+  import Phoenix.Sync.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -18,6 +19,10 @@ defmodule SyncTestWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+  end
+
+  scope "/shapes" do
+    sync("/users", SyncTest.SyncTest.User)
   end
 
   # Other scopes may use custom stacks.
