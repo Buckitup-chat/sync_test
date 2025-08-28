@@ -25,6 +25,12 @@ defmodule SyncTestWeb.Router do
     sync("/users", SyncTest.SyncTest.User)
   end
 
+  scope "/ingest", SyncTestWeb do
+    pipe_through [:api]
+
+    post "/mutations", IngestController, :ingest
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", SyncTestWeb do
   #   pipe_through :api
