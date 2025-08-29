@@ -1,4 +1,3 @@
-
 defmodule SyncTestWeb.IngestController do
   use SyncTestWeb, :controller
 
@@ -9,6 +8,7 @@ defmodule SyncTestWeb.IngestController do
 
   def ingest(conn, %{"mutations" => mutations}) do
     mutations |> dbg()
+
     {:ok, txid, _changes} =
       Writer.new()
       |> Writer.allow(
