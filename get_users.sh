@@ -1,3 +1,3 @@
 #!/bin/bash
 
-curl -i 'http://localhost:4000/shapes/users?offset=-1'
+curl -i 'http://buckitup.xyz:4403/shapes/users?offset=-1'

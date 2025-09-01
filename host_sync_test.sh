@@ -13,7 +13,7 @@ if [ `hostname` = 'eco' ]; then
   cd sync_test 
   git pull
 	mix deps.get --only prod
-	mix do compile, assets.setup, assets.deploy
+	mix do compile, assets.setup, assets.deploy, ecto.setup
   mix phx.gen.release
   MIX_ENV=prod mix release --overwrite
   sudo systemctl restart sync_test.service
