@@ -1,18 +1,18 @@
 # Sync Test Task Documentation
 
-- Server implements Phoenix Sync (Electric SQL)
-- Client should be built using Electric SQL write through the db approach https://electric-sql.com/docs/guides/writes#through-the-db. Tanstack and PGLite may help with this task.
+The ultimate goal of the task is to test out frontend side of [Phoenix Sync](https://www.youtube.com/watch?v=4IWShnVuRCg) 
 
+#Task
 
-Local-first application.
+Build local first user Registry application.
+A list where users could be created and filtered by name.
+User is identified by public key. Public key is created using ECC secp256k1. Private key can be dropped (is not used in this app) 
 
+The app should be built using [Electric SQL write through the db approach](https://electric-sql.com/docs/guides/writes#through-the-db). 
 
-Built a User list with filtering by name.
-User has a name and public key. Public key is created using ECC secp256k1. Private key can be dropped (is not used in this app)
+## Workflows
 
-
-
-Main workflow scenario:
+### Main workflow scenario:
  - Open the app in two browsers (A and B)
  - Browser A adds a new user
  - Browser B should see the new user
@@ -47,7 +47,7 @@ sequenceDiagram
 ```
 
 
-Filtered workflow scenario:
+### Filtered workflow scenario:
  - Open the app in two browsers (A and B)
  - Browser B filters users by name "Ann"
  - Browser A adds a new user with name "John"
@@ -81,3 +81,15 @@ sequenceDiagram
     BrowserB->>BrowserB: Reset filter
     Note over BrowserB: Both users "John" and "Ann" appear
 ```
+
+
+## Technical details
+
+### Reads
+Reading from a server is done through `/shapes/users` endpoint. [Example](https://github.com/Buckitup-chat/sync_test/blob/main/get_users.sh)
+See [Electric SQL OpenAPI](https://electric-sql.com/openapi.html) for more details.
+
+
+### Writes
+Writing to a server is done through `/ingest/mutation` endpoint. [Example](https://github.com/Buckitup-chat/sync_test/blob/main/post_user.sh)
+It uses [TanStack](https://tanstack.com/) mutation format for writing.
