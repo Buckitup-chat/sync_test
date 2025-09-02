@@ -1,12 +1,13 @@
 # Sync Test Task Documentation
 
-The ultimate goal of the task is to test out frontend side of [Phoenix Sync](https://www.youtube.com/watch?v=4IWShnVuRCg) 
+The ultimate goal of the task is to test the frontend side of [Phoenix Sync](https://www.youtube.com/watch?v=4IWShnVuRCg) 
 
-#Task
+# Task
 
-Build local first user Registry application.
-A list where users could be created and filtered by name.
-User is identified by public key. Public key is created using ECC secp256k1. Private key can be dropped (is not used in this app) 
+A local-first user registry application.
+ - A list where users can be created and filtered by name.
+ - User is identified by public key. 
+ - Public key is created using ECC secp256k1. Private key can be dropped (is not used in this app) 
 
 The app should be built using [Electric SQL write through the db approach](https://electric-sql.com/docs/guides/writes#through-the-db). 
 
@@ -56,7 +57,7 @@ sequenceDiagram
  - Browser B should see the new user "Ann"
  - Browser B disconnects from the internet
  - Browser B resets the filter
- - Browser B should see the all users "John" and "Ann"
+ - Browser B should see all users "John" and "Ann"
 
 ```mermaid
 sequenceDiagram
@@ -91,5 +92,5 @@ See [Electric SQL OpenAPI](https://electric-sql.com/openapi.html) for more detai
 
 
 ### Writes
-Writing to a server is done through `/ingest/mutation` endpoint. [Example](https://github.com/Buckitup-chat/sync_test/blob/main/post_user.sh)
+Writing to a server is done through `/ingest/mutations` endpoint. [Example](https://github.com/Buckitup-chat/sync_test/blob/main/post_user.sh)
 It uses [TanStack](https://tanstack.com/) mutation format for writing.
