@@ -86,11 +86,29 @@ sequenceDiagram
 
 ## Technical details
 
+### User schema
+
+**Database table (`users`):**
+```sql
+CREATE TABLE users (
+  pub_key BINARY PRIMARY KEY,  -- ECC secp256k1 public key (33 bytes compressed)
+  name STRING                  -- User display name
+);
+```
+
+**Key details:**
+- Primary key: `pub_key` (binary, 33 bytes for compressed secp256k1 public key)
+- Fields: `name` (string, required)
+- Constraints: unique `pub_key`, both fields required
+- Input format: accepts `pub_key` as hex string with `0x` or `\x` prefix, decoded to binary
+
 ### Reads
 Reading from a server is done through `/shapes/users` endpoint. [Example](https://github.com/Buckitup-chat/sync_test/blob/main/get_users.sh)
+
 See [Electric SQL OpenAPI](https://electric-sql.com/openapi.html) for more details.
 
 
 ### Writes
 Writing to a server is done through `/ingest/mutations` endpoint. [Example](https://github.com/Buckitup-chat/sync_test/blob/main/post_user.sh)
+
 It uses [TanStack](https://tanstack.com/) mutation format for writing.
