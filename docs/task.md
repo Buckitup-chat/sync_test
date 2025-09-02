@@ -1,5 +1,3 @@
-# Sync Test Task Documentation
-
 The ultimate goal of the task is to test the frontend side of [Phoenix Sync](https://www.youtube.com/watch?v=4IWShnVuRCg) 
 
 # Task
