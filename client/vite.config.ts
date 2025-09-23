@@ -20,9 +20,6 @@ export default defineConfig({
       "@electric-sql/pglite-sync",
     ],
   },
-  // build: {
-  //   rollupOptions: {},
-  // },
   server: {
     proxy: {
       "/api": {
@@ -30,6 +27,19 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
+
+      // To use with cloudflare worker
+      // "/api": {
+      //   target: "https://buckitup.ierehon1905.workers.dev",
+      //   changeOrigin: true,
+      // },
+
+      // To use with local backend
+      // "/api": {
+      //   target: "",
+      //   changeOrigin: true,
+      //   rewrite: (path) => path.replace(/^\/api/, ""),
+      // },
     },
   },
 });

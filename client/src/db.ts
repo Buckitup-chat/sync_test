@@ -4,7 +4,9 @@
 import { PGlite } from "@electric-sql/pglite";
 import { type PGliteWithLive, live } from "@electric-sql/pglite/live";
 import { electricSync } from "@electric-sql/pglite-sync";
+
 import localSchema from "./schema.sql?raw";
+import { API_URL } from "./env";
 
 const registry = new Map<string, Promise<PGliteWithLive>>();
 
@@ -32,7 +34,7 @@ async function _loadPGlite(): Promise<PGliteWithLive> {
 
   await pglite.electric.syncShapeToTable({
     shape: {
-      url: window.location.origin + "/api/shapes/users",
+      url: API_URL + "/shapes/users",
       parser: {
         bytea: (value: string) => {
           const stringBytes = value.slice(2);

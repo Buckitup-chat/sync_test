@@ -4,6 +4,8 @@
 import { type Operation } from "@electric-sql/client";
 import type { PGliteWithLive } from "@electric-sql/pglite/live";
 
+import { API_URL } from "./env";
+
 type Change = {
   id: number;
   operation: Operation;
@@ -132,7 +134,7 @@ export default class ChangeLogSynchronizer {
 
     let response: Response | undefined;
     try {
-      response = await fetch("/api/ingest/mutations", {
+      response = await fetch(API_URL + "/ingest/mutations", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
