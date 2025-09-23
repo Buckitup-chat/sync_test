@@ -69,17 +69,8 @@ const addUser = async () => {
   }
 };
 
-const formattedItems = computed(() => {
-  return items.value.map((item) => {
-    return {
-      ...item,
-      pub_key: getAddress(item.pub_key as Hex),
-    };
-  });
-});
-
 const filteredItems = computed(() => {
-  return formattedItems.value.filter((item) => {
+  return items.value.filter((item) => {
     return item.name.toLowerCase().includes(nameFilter.value.toLowerCase());
   });
 });
